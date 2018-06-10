@@ -14,7 +14,7 @@
     <!--libraries-->
     <scala-library.version>2.11.8</scala-library.version>
     <scalatest.version>3.0.4</scalatest.version>
-    <spark.version>2.1.0.cloudera1</spark.version>
+    <spark.version>2.2.0.cloudera1</spark.version>
     <spark.streaming.kafka.version>1.6.3</spark.streaming.kafka.version>
 
     <!--plugins-->
@@ -122,6 +122,12 @@
       <artifactId>spark-streaming-kafka_2.11</artifactId>
       <version>${spark.streaming.kafka.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>MrPowers</groupId>
+      <artifactId>spark-fast-tests</artifactId>
+      <version>2.2.0_0.7.0</version>
+    </dependency>
     <!--<dependency>-->
       <!--<groupId>com.holdenkarau</groupId>-->
       <!--<artifactId>spark-testing-base_2.11</artifactId>-->
@@ -186,6 +192,11 @@
       <id>cloudera</id>
       <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
     </repository>
+    <repository>
+      <id>spark-packages</id>
+      <url>http://dl.bintray.com/spark-packages/maven</url>
+    </repository>
+
   </repositories>
 
   <pluginRepositories>
