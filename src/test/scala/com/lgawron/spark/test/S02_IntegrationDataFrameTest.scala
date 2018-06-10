@@ -11,31 +11,26 @@ import scala.collection.Map
   * Created by lukasz.gawron on 17/05/2018.
   */
 class S02_IntegrationDataFrameTest extends SparkSessionBase {
-  it("counting word occurences on few lines of text should return count of words Ala and Bolek in this text") {
+  it("counting word occurences on few lines of text should return count Ala and Bolek words in this text") {
     Given("few lines of sentences")
     val schema = StructType(List(
-      StructField("value", StringType, true)
-    )
-    )
-    val linesDf: DataFrame = ss.createDataFrame(
-      ss.sparkContext.parallelize(Seq(
-        Row("Ala ma kota"),
-        Row("Bolek i Lolek"),
-        Row("Ala ma psa")
-      )),
-      schema
-    )
+      StructField("line", StringType, true)
+    ))
+    val linesDf: DataFrame = ss.read.schema(schema).json(getResourcePath("/text.json"))
 
     When("extract and count words")
-    val wordsCountDs: Dataset[(String, Long)] = WordCount.extractFilterAndCountWords(linesDf)
-    val collected: Array[(String, Long)] = wordsCountDs.collect()
-    val actual: Map[String, Long] = collected.toMap
+    val wordsCountDf: DataFrame = WordCount.extractFilterAndCountWords(linesDf)
+    val wordCount: Array[Row] = wordsCountDf.collect()
 
     Then("filtered words should be counted")
-    val expected = Map(
+    val actualWordCount = wordCount
+      .map((row: Row) =>
+        Tuple2(row.getAs[String]("word"), row.getAs[Long]("count")))
+      .toMap
+    val expectedWordCount = Map(
       "Ala" -> 2,
       "Bolek" -> 1
     )
-    actual should be(expected)
+    actualWordCount should be(expectedWordCount)
   }
 }
