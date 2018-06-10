@@ -1,7 +1,7 @@
 package com.lgawron.spark.test
 
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql.{Dataset, Row, DataFrame}
+import org.apache.spark.sql.{Column, Dataset, Row, DataFrame}
 import org.apache.spark.sql.functions._
 
 /**
@@ -18,15 +18,13 @@ object WordCount {
       })
   }
 
-  def extractFilterAndCountWords(wordsDf: DataFrame): Dataset[(String, Long)] = {
-    import wordsDf.sparkSession.implicits._
+  def extractFilterAndCountWords(wordsDf: DataFrame): DataFrame = {
+    val words: Column = explode(split(col("line"), " ")).as("word")
     wordsDf
-      .flatMap((row: Row) => row.getAs[String]("value").split(" "))
+      .select(words)
       .where(
-        col("value").equalTo("Ala")
-        .or(col("value").equalTo("Bolek")))
-      .map((word: String) => (word, 1))
-      .groupByKey(wordOccurence => wordOccurence._1)
+      col("word").equalTo("Ala").or(col("word").equalTo("Bolek")))
+      .groupBy("word")
       .count()
   }
 
