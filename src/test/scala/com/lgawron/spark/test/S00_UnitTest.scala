@@ -5,9 +5,9 @@ import org.scalatest._
 /**
   * Created by lukasz.gawron on 17/05/2018.
   */
-class S00_UnitTest extends FunSpec with BeforeAndAfterEach with Matchers with DiagrammedAssertions {
+class S00_UnitTest extends FunSpec with Matchers {
 
-  it("should split a sentence into words") {
+  it("extracting words from single line of text, should extract words splitting by space") {
     val line = "Ala ma kota"
 
     val words: Array[String] = WordCount.extractWords(line = line)
