@@ -10,7 +10,7 @@ class S00_UnitTest extends FunSpec with Matchers {
   it("extracting words from single line of text, should extract words splitting by space") {
     val line = "Ala ma kota"
 
-    val words: Array[String] = WordCount.extractWords(line = line)
+    val words: Array[String] = WordsCount.extractWords(line = line)
 
     val expected = Array("Ala", "ma", "kota")
     words should be (expected)

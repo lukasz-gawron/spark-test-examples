@@ -17,7 +17,7 @@ object App {
 
     val wordsRDD: RDD[String] = sc.parallelize(words)
     wordsRDD
-      .flatMap(WordCount.extractWords)
+      .flatMap(WordsCount.extractWords)
       .map((word: String) => (word, 1))
       .reduceByKey((occurence1: Int, occurence2: Int) => {
         occurence1 + occurence2

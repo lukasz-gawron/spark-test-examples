@@ -15,7 +15,7 @@ class S01_IntegrationTest extends SparkSessionBase {
     val linesRdd: RDD[String] = ss.sparkContext.parallelize(List("Ala ma kota", "Bolek i Lolek", "Ala ma psa"))
 
     When("extract and count words")
-    val wordsCountRdd: RDD[(String, Int)] = WordCount.extractFilterAndCountWords(linesRdd)
+    val wordsCountRdd: RDD[(String, Int)] = WordsCount.extractFilterAndCountWords(linesRdd)
     val actual: Map[String, Int] = wordsCountRdd.collectAsMap()
 
     Then("words should be counted")

@@ -19,7 +19,7 @@ class S02_IntegrationDataFrameTest extends SparkSessionBase {
     val linesDf: DataFrame = ss.read.schema(schema).json(getResourcePath("/text.json"))
 
     When("extract and count words")
-    val wordsCountDf: DataFrame = WordCount.extractFilterAndCountWords(linesDf)
+    val wordsCountDf: DataFrame = WordsCount.extractFilterAndCountWords(linesDf)
     val wordCount: Array[Row] = wordsCountDf.collect()
 
     Then("filtered words should be counted")
