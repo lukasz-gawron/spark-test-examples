@@ -8,7 +8,7 @@ import org.scalatest.{GivenWhenThen, BeforeAndAfterAll, FunSpec, Matchers}
 /**
   * Created by lukasz.gawron on 10/06/2018.
   */
-class SparkSessionBase extends FunSpec with BeforeAndAfterAll with Matchers with GivenWhenThen {
+class SparkSessionBaseSpec extends FunSpec with BeforeAndAfterAll with Matchers with GivenWhenThen {
 
   var ss: SparkSession = _
 
@@ -16,6 +16,7 @@ class SparkSessionBase extends FunSpec with BeforeAndAfterAll with Matchers with
 
     val conf = new SparkConf()
       .setMaster("local[4]")
+      .set("spark.streaming.clock", "org.apache.spark.streaming.util.ManualClock")
 
     ss = SparkSession.builder()
       .appName("TestApp" + System.currentTimeMillis())

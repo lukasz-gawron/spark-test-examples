@@ -10,7 +10,7 @@ import scala.collection.Map
 /**
   * Created by lukasz.gawron on 17/05/2018.
   */
-class S03_IntegrationDatasetTest extends SparkSessionBase{
+class S03_IntegrationDatasetTest extends SparkSessionBaseSpec{
   it("counting word occurences on few lines of text should return count Ala and Bolek words in this text") {
     Given("few lines of sentences")
     implicit val lineEncoder = product[Line]

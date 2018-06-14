@@ -1,17 +1,19 @@
 package com.lgawron.spark.test
 
+import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{Column, Dataset, Row, DataFrame}
 import org.apache.spark.sql.functions._
+import org.apache.spark.streaming.{Time, StreamingContext, Duration}
+import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 
 /**
   * Created by lukasz.gawron on 09/06/2018.
   */
 object WordsCount {
-  def extractFilterAndCountWords(wordsRDD: RDD[String]): RDD[(String, Int)] = {
+  def extractAndCountWords(wordsRDD: RDD[String]): RDD[(String, Int)] = {
     wordsRDD
       .flatMap(extractWords)
-      .filter(word => word == "Ala" || word == "Bolek")
       .map((word: String) => (word, 1))
       .reduceByKey((occurence1: Int, occurence2: Int) => {
         occurence1 + occurence2

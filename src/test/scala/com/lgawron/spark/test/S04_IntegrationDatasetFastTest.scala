@@ -8,7 +8,7 @@ import org.apache.spark.sql.Encoders._
 /**
   * Created by lukasz.gawron on 17/05/2018.
   */
-class S04_IntegrationDatasetFastTest extends SparkSessionBase with DatasetComparer {
+class S04_IntegrationDatasetFastTest extends SparkSessionBaseSpec with DatasetComparer {
   it("counting word occurences on few lines of text should return count Ala and Bolek words in this text") {
     Given("few lines of sentences")
     implicit val lineEncoder = product[Line]
