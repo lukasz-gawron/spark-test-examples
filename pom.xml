@@ -128,26 +128,20 @@
       <artifactId>spark-fast-tests</artifactId>
       <version>2.2.0_0.7.0</version>
     </dependency>
-    <!--<dependency>-->
-      <!--<groupId>com.holdenkarau</groupId>-->
-      <!--<artifactId>spark-testing-base_2.11</artifactId>-->
-      <!--<version>2.1.0_0.9.0</version>-->
-      <!--<scope>test</scope>-->
-      <!--<exclusions>-->
-        <!--&lt;!&ndash; below exclude is required after upgrade to 2.1.0.cloudera1 otherwise-->
-        <!--java.lang.IllegalArgumentException: Unable to instantiate SparkSession with Hive support because Hive classes are not found.&ndash;&gt;-->
-        <!--<exclusion>-->
-          <!--<artifactId>hadoop-mapreduce-client-jobclient</artifactId>-->
-          <!--<groupId>org.apache.hadoop</groupId>-->
-        <!--</exclusion>-->
-        <!--&lt;!&ndash; below exclude is required after upgrade to 2.1.0.cloudera1 otherwise-->
-        <!--Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.util.StopWatch will be thrown &ndash;&gt;-->
-        <!--<exclusion>-->
-          <!--<groupId>org.apache.hadoop</groupId>-->
-          <!--<artifactId>hadoop-common</artifactId>-->
-        <!--</exclusion>-->
-      <!--</exclusions>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>com.holdenkarau</groupId>
+      <artifactId>spark-testing-base_2.11</artifactId>
+      <version>2.2.0_0.8.0</version>
+      <scope>test</scope>
+      <exclusions>
+        <!-- below exclude is required after upgrade to 2.1.0.cloudera1 otherwise
+        java.lang.IllegalArgumentException: Unable to instantiate SparkSession with Hive support because Hive classes are not found.-->
+        <exclusion>
+          <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+          <groupId>org.apache.hadoop</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_2.11</artifactId>
