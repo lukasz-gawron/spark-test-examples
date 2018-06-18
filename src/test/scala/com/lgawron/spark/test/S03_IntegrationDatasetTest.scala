@@ -1,6 +1,5 @@
 package com.lgawron.spark.test
 
-import com.github.mrpowers.spark.fast.tests.DatasetComparer
 import com.lgawron.spark.test.WordsCount.{Line, WordCount}
 import org.apache.spark.sql.Dataset
 import org.apache.spark.sql.Encoders._
