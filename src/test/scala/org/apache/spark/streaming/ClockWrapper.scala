@@ -19,7 +19,6 @@ package org.apache.spark.streaming
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import org.apache.spark.streaming.{Duration, StreamingContext}
 import org.apache.spark.util.ManualClock
 
 
