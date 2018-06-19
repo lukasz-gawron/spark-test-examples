@@ -14,7 +14,7 @@ import scala.collection.mutable.ListBuffer
 /**
   * Example from https://github.com/mkuthan/example-spark
   */
-class S05_StreamingTest extends SparkStreamingBaseSpec with Eventually {
+class S05_StreamingTestManualClock extends SparkStreamingBaseSpec with Eventually {
 
   // default timeout for eventually trait
   implicit override val patienceConfig =
