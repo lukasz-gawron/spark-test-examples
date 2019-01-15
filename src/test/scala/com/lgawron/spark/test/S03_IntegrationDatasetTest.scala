@@ -10,18 +10,18 @@ import scala.collection.Map
   * Created by lukasz.gawron on 17/05/2018.
   */
 class S03_IntegrationDatasetTest extends SparkSessionBaseSpec{
+  import ss.implicits._
   it("counting word occurences on few lines of text should return count Ala and Bolek words in this text") {
     Given("few lines of sentences")
     implicit val lineEncoder = product[Line]
-    val lines = List(
+    val linesDs = List(
       Line(text = "Ala ma kota"),
       Line(text = "Bolek i Lolek"),
-      Line(text = "Ala ma psa"))
-    val linesDs: Dataset[Line] = ss.createDataset(lines)
+      Line(text = "Ala ma psa")).toDS()
 
     When("extract and count words")
-    val wordsCountDf: Dataset[WordCount] = WordsCount.extractFilterAndCountWordsDataset(linesDs)
-    val actualWordCount: Array[WordCount] = wordsCountDf.collect()
+    val wordsCountDs: Dataset[WordCount] = WordsCount.extractFilterAndCountWordsDataset(linesDs)
+    val actualWordCount: Array[WordCount] = wordsCountDs.collect()
 
     Then("filtered words should be counted")
     val expectedWordCount = Array(

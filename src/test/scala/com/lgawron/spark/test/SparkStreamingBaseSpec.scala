@@ -12,14 +12,14 @@ import org.scalatest.concurrent.Eventually
   */
 class SparkStreamingBaseSpec extends SparkSessionBaseSpec with BeforeAndAfterAll with Eventually {
 
-  var ssc: StreamingContext = _
+  var ssc: TestStreamingContext = _
   def checkpointDir: String = Files.createTempDirectory(this.getClass.getSimpleName).toUri.toString
   def batchDuration: Duration = Seconds(1)
 
   override def beforeAll(): Unit = {
     super.beforeAll()
-    ssc = new StreamingContext(ss.sparkContext, Milliseconds(1000))
-    ssc.checkpoint(checkpointDir)
+    ssc = new TestStreamingContext(ss.sparkContext, Milliseconds(1000))
+//    ssc.checkpoint(checkpointDir)
   }
 
   override def afterAll(): Unit = {

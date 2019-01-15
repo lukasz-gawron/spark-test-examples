@@ -15,19 +15,19 @@ class S06_01_IntegrationDatasetSparkTestingBaseTest extends FunSpec with Dataset
     Given("few lines of sentences")
     implicit val lineEncoder = product[Line]
     implicit val wordEncoder = product[WordCount]
-    val lines = List(
+    import spark.implicits._
+    val linesDs = List(
       Line(text = "Ala ma kota"),
       Line(text = "Bolek i Lolek"),
-      Line(text = "Ala ma psa"))
-    val linesDs: Dataset[Line] = spark.createDataset(lines)
+      Line(text = "Ala ma psa")).toDS()
 
     When("extract and count words")
     val wordsCountDs: Dataset[WordCount] = WordsCount.extractFilterAndCountWordsDataset(linesDs)
     Then("filtered words should be counted")
-    val expectedDs: Dataset[WordCount] = spark.createDataset(Seq(
+    val expectedDs: Dataset[WordCount] = Seq(
       WordCount("Bolek", 1),
       WordCount("Ala", 2)
-    ))
+    ).toDS()
     assertDatasetEquals(expected = expectedDs, result = wordsCountDs)
   }
 }

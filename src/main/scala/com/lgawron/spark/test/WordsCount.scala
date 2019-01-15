@@ -7,6 +7,8 @@ import org.apache.spark.sql.functions._
 import org.apache.spark.streaming.{Time, StreamingContext, Duration}
 import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * Created by lukasz.gawron on 09/06/2018.
   */
@@ -48,4 +50,7 @@ object WordsCount {
   def extractWords(line: String): Array[String] = {
     line.split(" ")
   }
+
+
+
 }

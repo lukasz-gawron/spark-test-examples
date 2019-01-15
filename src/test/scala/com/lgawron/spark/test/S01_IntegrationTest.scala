@@ -28,6 +28,6 @@ class S01_IntegrationTest extends SparkSessionBaseSpec {
       "Lolek"-> 1,
       "psa"  -> 1
     )
-    actual should be(expected)
+    actual should equal(expected)
   }
 }

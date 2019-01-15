@@ -24,6 +24,4 @@ object App {
       })
       .saveAsTextFile("/tmp/output")
   }
-
-
 }
