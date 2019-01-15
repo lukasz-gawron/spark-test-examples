@@ -1,11 +1,11 @@
 package com.lgawron.spark.test
 
-//import com.github.mrpowers.spark.fast.tests.DatasetComparer
-import com.holdenkarau.spark.testing.{DatasetSuiteBase, SharedSparkContext}
+
+import com.holdenkarau.spark.testing.DatasetSuiteBase
 import com.lgawron.spark.test.WordsCount.{Line, WordCount}
 import org.apache.spark.sql.Dataset
 import org.apache.spark.sql.Encoders._
-import org.scalatest.{Matchers, GivenWhenThen, FunSpec}
+import org.scalatest.{FunSpec, GivenWhenThen}
 
 /**
   * Created by lukasz.gawron on 17/05/2018.
@@ -23,6 +23,7 @@ class S06_01_IntegrationDatasetSparkTestingBaseTest extends FunSpec with Dataset
 
     When("extract and count words")
     val wordsCountDs: Dataset[WordCount] = WordsCount.extractFilterAndCountWordsDataset(linesDs)
+
     Then("filtered words should be counted")
     val expectedDs: Dataset[WordCount] = Seq(
       WordCount("Bolek", 1),

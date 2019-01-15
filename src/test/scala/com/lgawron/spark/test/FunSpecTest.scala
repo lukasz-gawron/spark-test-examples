@@ -4,6 +4,7 @@ import org.scalatest._
 
 /**
   * Created by lukasz.gawron on 16/05/2018.
+  * Examples of specs in ScalaTest
   */
 class FunSpecTest extends FunSpec {
   describe("A Set") {

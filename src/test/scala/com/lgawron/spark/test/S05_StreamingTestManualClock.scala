@@ -13,6 +13,9 @@ import scala.collection.mutable.ListBuffer
 
 /**
   * Example from https://github.com/mkuthan/example-spark
+  * Not work on 2.2?
+  * java.lang.IllegalArgumentException: requirement failed: The checkpoint directory has not been set. Please set it by StreamingContext.checkpoint().
+  * Similiar approach worked on Spark 2.1-cloudera we were using. Needs to confirm that with working example.
   */
 class S05_StreamingTestManualClock extends SparkStreamingBaseSpec with Eventually {
 

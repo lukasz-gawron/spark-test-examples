@@ -1,16 +1,14 @@
 package com.lgawron.spark.test
 
-//import com.github.mrpowers.spark.fast.tests.DatasetComparer
-import com.holdenkarau.spark.testing.{StreamingSuiteBase, DatasetSuiteBase}
-import com.lgawron.spark.test.WordsCount.{Line, WordCount}
-import org.apache.spark.sql.Dataset
-import org.apache.spark.sql.Encoders._
+import com.holdenkarau.spark.testing.StreamingSuiteBase
 import org.apache.spark.streaming.Seconds
 import org.apache.spark.streaming.dstream.DStream
-import org.scalatest.{FunSuite, FunSpec, GivenWhenThen}
+import org.scalatest.FunSuite
 
 /**
+  * Examples from https://github.com/holdenk/spark-testing-base/wiki/StreamingSuiteBase
   * Created by lukasz.gawron on 17/05/2018.
+  *
   */
 class S06_02_StreamingTest_SparkTestingBase extends FunSuite with StreamingSuiteBase {
 

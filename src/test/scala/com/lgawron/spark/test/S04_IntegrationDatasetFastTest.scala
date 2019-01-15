@@ -7,6 +7,8 @@ import org.apache.spark.sql.Encoders._
 
 /**
   * Created by lukasz.gawron on 17/05/2018.
+  * Example of using spark-fast-tests library.
+  * Using asserts on Spark data structures give struct checks for free
   */
 class S04_IntegrationDatasetFastTest extends SparkSessionBaseSpec with DatasetComparer {
   it("counting word occurences on few lines of text should return count Ala and Bolek words in this text") {
