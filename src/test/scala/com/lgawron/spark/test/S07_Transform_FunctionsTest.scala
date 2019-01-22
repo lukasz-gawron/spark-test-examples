@@ -12,6 +12,8 @@ import org.scalatest.{GivenWhenThen, FunSpec, FunSuite}
 
 /**
   * Created by lukasz.gawron on 17/05/2018.
+  * https://medium.com/@mrpowers/designing-easily-testable-spark-code-df0755ef00a4
+  * https://medium.com/@mrpowers/testing-spark-applications-8c590d3215fa
   */
 class S07_Transform_FunctionsTest extends FunSpec with SparkSessionBaseSpec with GivenWhenThen with DatasetComparer {
 
