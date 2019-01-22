@@ -9,7 +9,7 @@ import scala.collection.Map
   * Created by lukasz.gawron on 17/05/2018.
   */
 class S01_IntegrationRDDTest extends SparkSessionBaseSpec {
-  val spark = ss
+
   it("should count words occurence in all lines") {
     Given("RDD of sentences")
     val linesRdd: RDD[String] = ss.sparkContext.parallelize(List("Ala ma kota", "Bolek i Lolek", "Ala ma psa"))
