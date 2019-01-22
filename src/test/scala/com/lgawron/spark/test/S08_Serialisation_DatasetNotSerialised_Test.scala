@@ -7,6 +7,7 @@ import org.apache.spark.sql.{DataFrame, Dataset}
 
 /**
   * Created by lukasz.gawron on 21/11/2018.
+  * https://spark.apache.org/docs/latest/rdd-programming-guide.html#understanding-closures-
   */
 class S08_Serialisation_DatasetNotSerialised_Test extends SparkSessionBaseSpec {
 
